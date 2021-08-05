@@ -11,7 +11,7 @@ let getNumber = () => {
             console.log(total);
             return rl.close();
         }
-        total += parseInt(answer);
+        total += Number(answer);
         getNumber();
     })
 };
