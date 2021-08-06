@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
     }
 });
 
-//submit
-app.post('/result', (req, res, next) => {
+//submit form
+app.post('/result', (req, res) => {
     let name = req.body.name;
     let age = req.body.age;
     if (!name) {
