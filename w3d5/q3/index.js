@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: false}));
 
 //index
 app.get('/', (req, res) => {
-    res.status(201).sendFile(path.join(__dirname, 'views', 'index.html'));
+    res.status(200).sendFile(path.join(__dirname, 'views', 'index.html'));
     if(hour >= 6){
         app.use('/css', express.static(path.join(__dirname, 'css', 'day.css')));
     } else {

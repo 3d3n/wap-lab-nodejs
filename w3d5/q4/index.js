@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: false}));
 
 //index
 app.get('/', (req, res) => {
-    res.status(201).sendFile(path.join(__dirname, '../', 'q3', 'views', 'index.html'));
+    res.status(200).sendFile(path.join(__dirname, '../', 'q3', 'views', 'index.html'));
     if(hour >= 6){
         app.use('/css', express.static(path.join(__dirname, '../', 'q3', 'css', 'day.css')));
     } else {
@@ -25,7 +25,6 @@ app.post('/result', (req, res, next) => {
         name = "person";
         age = "unkonwn age"
     }
-    // res.send(`Welcome ${name}, ${age}`);
     res.redirect(303, `/output?name=${name}&age=${age}`);
 });
 
