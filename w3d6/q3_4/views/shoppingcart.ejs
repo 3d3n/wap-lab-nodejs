@@ -1,0 +1,35 @@
+<%- include('./partials/head.ejs')%>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+            <!-- Product section-->
+            <section class="py-5">
+                <!-- loop -->
+                <% if (cartItems.length > 0) { %>
+                    <% cartItems.forEach(element => { %>
+                        <div class="container px-4 px-lg-5 my-5">
+                            <div class="row gx-4 gx-lg-5 align-items-left">
+                                <div class="col-md-4"><img class="card-img-left mb-5 mb-md-0" src="images/200.png" alt="..." /></div>
+                                <div class="col-md-6">
+                                    <div class="fs-5 mb-5">
+                                        <span>$<%= element.product.price %> </span>
+                                        <p class="lead"><%= element.product.description %></p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value=<%= element.quantity %> style="max-width: 3rem" />
+                                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                            <i class="bi bi-trash-fill me-1"></i>
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>There are no items in cart...</p>
+                <% } %>
+                
+
+            </section>
+       
+<%- include('./partials/footer.ejs')%>

@@ -11,12 +11,10 @@ app.use('/css', express.static(path.join(__dirname, 'css')));
 //correction
 //index
 app.get('/', (req, res) => {
-    let css;
-    if(hour >= 6){
+    let css = 'night.css';
+    if(hour >= 6 && hour < 18){
         css = 'day.css';
-    } else {
-        css = 'night.css';
-    }
+    } 
     res.status(200).send(`
     <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +23,7 @@ app.get('/', (req, res) => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>W3D5</title>
-    <link rel="stylesheet" href="../css/${css}">
+    <link rel="stylesheet" href="css/${css}">
 </head>
 <body>
     <div>

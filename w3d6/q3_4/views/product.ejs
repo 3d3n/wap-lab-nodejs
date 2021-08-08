@@ -1,0 +1,51 @@
+<%- include('./partials/head.ejs')%>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <!-- product loop -->
+                    <% if (prods.length > 0) { %>
+                        <% prods.forEach(item =>  {%>
+                            <form action="/addToCart" method="post">
+                                <!-- Product object-->
+                                <input type="hidden" value=<%=item%> >
+                                <div class="col mb-5">
+                                    <div class="card h-100">
+                                        <!-- Product image-->
+                                        <img class="card-img-top" src="images/450x300.jpeg" alt="..." />
+                                        <!-- Product details-->
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <!-- Product name-->
+                                                <h5 class="fw-bolder"><%=item.name%></h5>
+                                                <!-- Product price-->
+                                                $<%=item.price%>
+                                            </div>
+                                            <div class="text-center">
+                                                <!-- Product description-->
+                                                <%=item.description%>
+                                            </div>
+                                        </div>
+                                        <!-- Product actions-->
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center">
+                                                <!-- <button class="btn btn-outline-dark mt-auto" >Add to Cart</button> -->
+                                                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                                    <i class="bi-cart-fill me-1"></i>
+                                                    Add to cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <% })%>
+                    <% } else { %>
+                        <p>There are no products to display...</p>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+<%- include('./partials/footer.ejs')%>
