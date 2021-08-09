@@ -10,7 +10,7 @@
                         <% prods.forEach(item =>  {%>
                             <form action="/addToCart" method="post">
                                 <!-- Product object-->
-                                <input type="hidden" value=<%=item%> >
+                                <input type="hidden" value=<%=item.id%> name="id">
                                 <div class="col mb-5">
                                     <div class="card h-100">
                                         <!-- Product image-->
@@ -32,7 +32,7 @@
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center">
                                                 <!-- <button class="btn btn-outline-dark mt-auto" >Add to Cart</button> -->
-                                                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                                <button class="btn btn-outline-dark flex-shrink-0">
                                                     <i class="bi-cart-fill me-1"></i>
                                                     Add to cart
                                                 </button>

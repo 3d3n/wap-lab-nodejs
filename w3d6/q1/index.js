@@ -14,10 +14,11 @@ app.get('/', (req, res) => {
     let css = 'night.css';
     if(hour >= 6 && hour < 18){
         css = 'day.css';
-    } 
-    res.render("index", {
+    }
+    res.locals = {
         time: date.toTimeString(),
         css
-    });
+    };
+    res.render("index");
 });
 app.listen(3000);

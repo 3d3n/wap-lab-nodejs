@@ -1,6 +1,4 @@
 const express = require('express');
-const path = require('path');
-const { nextTick } = require('process');
 const product = require('./models/product');
 const cart = require('./models/shoppingCart');
 
@@ -17,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // body parser
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -57,12 +55,11 @@ app.get('/product', (req, res) => {
 });
 
 app.post('/addToCart', (req, res) => {
-    console.log(req.body);
+    const newProd = product.getById(req.body.id); 
+    console.log(newProd);
     res.redirect(303, '/');
 });
 
 app.get('/cart', (req, res) => {
-    res.render('shoppingcart', {
-
-    });
+    res.render('shoppingcart');
 });

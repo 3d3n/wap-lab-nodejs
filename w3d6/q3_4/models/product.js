@@ -15,4 +15,8 @@ module.exports = class Product {
     static getAll(){
         return products;
     }
+
+    static getById(id){
+        return products.find(i => i.id == id);
+    }
 }
