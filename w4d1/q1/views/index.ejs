@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div>
+      <form action="/addCookie" method="post">
+        <h2>Add Cookie</h2>
+        <label for="key">Key </label>
+        <input type="text" name="key">
+        <label for="value">Value </label>
+        <input type="text" name="value">
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <div class="container">
+        <table>
+            <caption>Current Cookies</caption>
+            <tr>
+              <th>Key</th>
+              <th>Value</th>
+              <th>Action</th>
+            </tr>
+            <!-- key:value pair loop -->
+            <% for( let index in cookieObj ) { %>
+                <tr>
+                    <td><%= index %> </td>
+                    <td><%= cookieObj[index]%> </td>
+                    <td><a href="/forget?key=<%= index %>" >forget</a></td>
+                </tr>
+            <% } %>
+          </table>
+    </div>
+  </body>
+</html>

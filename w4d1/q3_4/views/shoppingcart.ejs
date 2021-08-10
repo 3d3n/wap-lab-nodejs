@@ -1,0 +1,40 @@
+<%- include('./partials/head.ejs')%>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+            <!-- Product section-->
+            <section class="py-5">
+                <!-- loop -->
+                <% if (cartSize > 0) { %>
+                    <% for(const element in cartItems) { %>
+                        <div class="container px-4 px-lg-5 my-5">
+                            <div class="row gx-4 gx-lg-5 align-items-left">
+                                <div class="col-md-4"><img class="card-img-left mb-5 mb-md-0" src="images/200.png" alt="..." /></div>
+                                <div class="col-md-6">
+                                    <div class="fs-5 mb-5">
+                                        <span>$<%= cartItems[element].product.price %> </span>
+                                        <p class="lead"><%= cartItems[element].product.description %></p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <input class="form-control text-center me-3" id="inputQuantity" disabled type="num" value=<%= cartItems[element].quantity %> style="max-width: 3rem" />
+                                        <form action="/remove" method="get">
+                                            <input type="hidden" value=<%=element%> name="id">
+                                            <button class="btn btn-outline-dark flex-shrink-0">
+                                                <i class="bi bi-trash-fill me-1"></i>
+                                                Remove
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    <div class="container px-4 px-lg-5 my-5 fs-5 mb-5">
+                        <span>Subtotal (<%=cartSize%>  items): $<%= cartSubtotal %> </span>
+                    </div>
+                <% } else { %>
+                    <p>There are no items in cart...</p>
+                <% } %>
+                
+            </section>
+       
+<%- include('./partials/footer.ejs')%>
