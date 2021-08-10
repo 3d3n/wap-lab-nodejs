@@ -39,12 +39,6 @@ prod2.save();
 prod3.save();
 prod4.save();
 
-let cartItem1 = new cart(prod1, 3, 3 * prod1.price);
-let cartItem2 = new cart(prod2, 1, prod1.price);
-cartItem1.save();
-cartItem2.save();
-
-
 app.use((req, res, next) => {
 
     res.locals = {
@@ -64,7 +58,6 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
     res.render('products');
 });
-
 
 app.get('/viewProduct', (req, res) => {
 
@@ -88,8 +81,7 @@ app.post('/addToCart', (req, res) => {
         let qty = cartItem.quantity + 1;
         let cartItem1 = new cart(cartItem.product, qty, qty * cartItem.product.price);
         req.session.cart[id] = cartItem1;
-    }
-    
+    }  
     //subtotal
     let sub = 0;
     let obj = req.session.cart;
@@ -97,9 +89,8 @@ app.post('/addToCart', (req, res) => {
        sub += obj[key].total;               
     }
     req.session.subtotal = sub;
-    console.log("Current Cart Session:: " + JSON.stringify(req.session.cart));
-    console.log("Current Cart Subtotal:: " + JSON.stringify(req.session.subtotal));
 
+    console.log("Current Cart Session:: " + JSON.stringify(req.session.cart));
     res.redirect(303, '/cart');
 });
 
