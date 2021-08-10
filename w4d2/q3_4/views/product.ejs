@@ -1,0 +1,49 @@
+<%- include('./partials/head.ejs')%>
+  <body>
+    <%- include('./partials/nav.ejs')%>
+         <!-- Product section -->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="images/600X700.jpeg" alt="..." /></div>
+                    <!-- <form action="/addToCart" method="post"> -->
+                    <form id="submit">
+                        <input type="hidden" value=<%=prod.id%> name="id" id="prodId">
+                        <div class="col-md-6">
+                            <!-- product id -->
+                            <div class="small mb-1">SKU: <%= prod.id %> </div>
+                            <!-- product name -->
+                            <h1 class="display-5 fw-bolder"> <%= prod.name %></h1>
+                            <!-- product price -->
+                            <div class="fs-5 mb-5">
+                                <!-- <span class="text-decoration-line-through">$45.00</span> -->
+                                <span>$<%= prod.price %></span>
+                            </div>
+                            <!-- product description -->
+                            <p class="lead"><%= prod.description %></p>
+                            <div class="d-flex">
+                                <!-- product quantity -->
+                                <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" /> -->
+                                <button class="btn btn-outline-dark flex-shrink-0" >
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Add to cart
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container px-4 px-lg-5 my-5"">
+                <div>
+                    <form action="/cart">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            view Cart
+                            <!-- <span class="badge bg-dark text-white ms-1 rounded-pill"><//%=cartSize%> </span> -->
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="quantity"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+<%- include('./partials/footer.ejs')%>
