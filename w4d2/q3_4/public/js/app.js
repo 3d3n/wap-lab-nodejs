@@ -1,7 +1,6 @@
 $(() => {
 
     $("#submit").submit(() => {
-        console.log($("#prodId").val())
         const data = {
             id: $("#prodId").val(),
         };

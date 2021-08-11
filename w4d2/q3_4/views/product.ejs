@@ -23,7 +23,6 @@
                             <p class="lead"><%= prod.description %></p>
                             <div class="d-flex">
                                 <!-- product quantity -->
-                                <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" /> -->
                                 <button class="btn btn-outline-dark flex-shrink-0" >
                                     <i class="bi-cart-fill me-1"></i>
                                     Add to cart
@@ -40,7 +39,7 @@
                             <i class="bi-cart-fill me-1"></i>
                             view Cart
                             <!-- <span class="badge bg-dark text-white ms-1 rounded-pill"><//%=cartSize%> </span> -->
-                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="quantity"></span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="quantity"><%=cartSize%> </span>
                         </button>
                     </form>
                 </div>

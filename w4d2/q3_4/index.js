@@ -46,7 +46,7 @@ app.use((req, res, next) => {
         prods: product.getAll(),
         cartItems: (req.session.cart ? req.session.cart : {}),
         cartSize: (req.session.cart ? Object.keys(req.session.cart).length : 0),
-        cartSubtotal: (req.session.subtotal ? req.session.subtotal : 0) 
+        cartSubtotal: (req.session.subtotal ? req.session.subtotal : 0),
     };
     next()
 });
@@ -91,8 +91,9 @@ app.post('/addToCart', (req, res) => {
     req.session.subtotal = sub;
 
     console.log("Current Cart Session:: " + JSON.stringify(req.session.cart));
-    // res.redirect(303, '/cart');
-    res.send(200, {quantity : (req.session.cart ? Object.keys(req.session.cart).length : 0)})
+    res.send(200, {
+        quantity : (req.session.cart ? Object.keys(req.session.cart).length : 0)
+    })
 });
 
 app.get('/cart', (req, res) => {
